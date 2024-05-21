@@ -5,6 +5,7 @@
 
 SELECT
     block_number,
-    node_call :data :result AS block_response
+    node_call :data :result AS RESULT,
+    _inserted_timestamp
 FROM
     {{ ref('bronze_lq__get_block_by_number') }}
