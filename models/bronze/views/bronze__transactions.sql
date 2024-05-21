@@ -6,6 +6,7 @@
 SELECT
     block_number,
     tx_hash,
-    node_call :data :result AS tx_response
+    node_call :data :result AS RESULT,
+    _inserted_timestamp
 FROM
     {{ ref('bronze_lq__get_transactions') }}
