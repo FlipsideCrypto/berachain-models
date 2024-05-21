@@ -47,7 +47,7 @@ jobs:
   run_dbt_jobs:
     runs-on: ubuntu-latest
     environment: 
-      name: workflow_${{ inputs.environment }}
+      name: workflow_prod_backfill
 
     steps:
       - uses: actions/checkout@v3
