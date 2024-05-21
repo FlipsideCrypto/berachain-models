@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: silver_crosschain
+    database: "{{ 'crosschain' if target.database == 'BERACHAIN' else 'crosschain_dev' }}"
+    schema: silver
+    tables:
+      - name: number_sequence
+  - name: github_actions
+    database: berachain
+    schema: github_actions
+    tables:
+      - name: workflows
