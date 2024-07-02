@@ -67,3 +67,23 @@ vars:
   HEAL_MODEL: False
   HEAL_CURATED_MODEL: []
   START_GHA_TASKS: False
+
+
+#### STREAMLINE 2.0 BEGIN ####
+
+  API_INTEGRATION: '{{ var("config")[target.name]["API_INTEGRATION"] if var("config")[target.name] else var("config")["dev"]["API_INTEGRATION"] }}'
+  EXTERNAL_FUNCTION_URI: '{{ var("config")[target.name]["EXTERNAL_FUNCTION_URI"] if var("config")[target.name] else var("config")["dev"]["EXTERNAL_FUNCTION_URI"] }}'
+  API_AWS_ROLE_ARN: '{{ var("config")[target.name]["API_AWS_ROLE_ARN"] if var("config")[target.name] else var("config")["dev"]["API_AWS_ROLE_ARN"] }}'
+  ROLES: '{{ var("config")[target.name]["ROLES"] }}'
+
+  config:
+  # The keys correspond to dbt profiles and are case sensitive
+    dev:
+      API_INTEGRATION: aws_berachain_api_stg_v2
+      EXTERNAL_FUNCTION_URI: b387zu3um2.execute-api.us-east-1.amazonaws.com/stg/
+      API_AWS_ROLE_ARN: arn:aws:iam::704693948482:role/berachain-api-stg-rolesnowflakeudfsAF733095-Y5WdOPq9Ipf3
+      ROLES:
+        - AWS_LAMBDA_BERACHAIN_API
+        - INTERNAL_DEV
+
+#### STREAMLINE 2.0 END ####
