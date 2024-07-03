@@ -32,10 +32,6 @@ ready_blocks AS (
         block_number
     FROM
         to_do
-    ORDER BY
-        1 DESC
-    LIMIT
-        10
 )
 SELECT
     block_number,
