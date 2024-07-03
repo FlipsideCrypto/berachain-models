@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: silver_crosschain
+  - name: crosschain_silver
     database: "{{ 'crosschain' if target.database == 'BERACHAIN' else 'crosschain_dev' }}"
     schema: silver
     tables:
@@ -11,3 +11,12 @@ sources:
     schema: github_actions
     tables:
       - name: workflows
+  - name: bronze_streamline
+    database: streamline
+    schema: |
+      {{ "BERACHAIN_DEV" if var("STREAMLINE_USE_DEV_FOR_EXTERNAL_TABLES", False) else "BERACHAIN" }}
+    tables:
+      - name: testnet_receipts
+      - name: testnet_blocks
+      - name: testnet_transactions
+      - name: testnet_traces
