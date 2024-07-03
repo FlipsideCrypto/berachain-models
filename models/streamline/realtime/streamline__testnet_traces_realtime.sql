@@ -4,7 +4,7 @@
         func = 'streamline.udf_bulk_rest_api_v2',
         target = "{{this.schema}}.{{this.identifier}}",
         params ={ "external_table" :"testnet_traces",
-        "sql_limit" :"100000",
+        "sql_limit" :"50000",
         "producer_batch_size" :"10000",
         "worker_batch_size" :"2000",
         "sql_source" :"{{this.identifier}}",
@@ -63,4 +63,4 @@ FROM
 ORDER BY
     block_number DESC
 LIMIT
-    100000
+    50000
