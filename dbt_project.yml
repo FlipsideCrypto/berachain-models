@@ -88,7 +88,7 @@ vars:
 
     prod:
       API_INTEGRATION: aws_berachain_api_prod_v2
-      EXTERNAL_FUNCTION_URI: https://ayji5axa1e.execute-api.us-east-1.amazonaws.com/prod/
+      EXTERNAL_FUNCTION_URI: ayji5axa1e.execute-api.us-east-1.amazonaws.com/prod/
       API_AWS_ROLE_ARN: arn:aws:lambda:us-east-1:924682671219:function:berachain-api-prod-APIHandler-X72SH1yiwuQ4
       ROLES:
         - AWS_LAMBDA_BERACHAIN_API
