@@ -6,7 +6,7 @@
             block_number AS base_block_number,
             tx_hash AS base_tx_hash
         FROM
-            {{ ref('test_silver_testnet__transactions_full') }}
+            {{ ref('test_silver__transactions_full') }}
     ),
     model_name AS (
         SELECT
@@ -40,7 +40,7 @@ WHERE
             block_number AS base_block_number,
             tx_hash AS base_tx_hash
         FROM
-            {{ ref('test_silver_testnet__transactions_recent') }}
+            {{ ref('test_silver__transactions_recent') }}
     ),
     model_name AS (
         SELECT

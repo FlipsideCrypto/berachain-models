@@ -1,0 +1,46 @@
+version: 2
+models:
+  - name: testnet__fact_blocks
+    description: '{{ doc("berachain_blocks_table_doc") }}'   
+
+    columns:
+      - name: BLOCK_NUMBER
+        description: '{{ doc("berachain_block_number") }}'   
+      - name: BLOCK_TIMESTAMP
+        description: '{{ doc("berachain_block_timestamp") }}'
+      - name: NETWORK
+        description: '{{ doc("berachain_network") }}'
+      - name: BLOCKCHAIN
+        description: '{{ doc("berachain_blockchain") }}'
+      - name: TX_COUNT
+        description: '{{ doc("berachain_tx_count") }}'
+      - name: DIFFICULTY
+        description: '{{ doc("berachain_difficulty") }}'
+      - name: TOTAL_DIFFICULTY
+        description: '{{ doc("berachain_total_difficulty") }}'
+      - name: EXTRA_DATA
+        description: '{{ doc("berachain_extra_data") }}'
+      - name: GAS_LIMIT
+        description: '{{ doc("berachain_gas_limit") }}'
+      - name: GAS_USED
+        description: '{{ doc("berachain_gas_used") }}'
+      - name: HASH
+        description: '{{ doc("berachain_blocks_hash") }}'
+      - name: PARENT_HASH
+        description: '{{ doc("berachain_parent_hash") }}'
+      - name: RECEIPTS_ROOT
+        description: '{{ doc("berachain_receipts_root") }}'
+      - name: SHA3_UNCLES
+        description: '{{ doc("berachain_sha3_uncles") }}'
+      - name: SIZE
+        description: '{{ doc("berachain_size") }}' 
+      - name: UNCLE_BLOCKS
+        description: '{{ doc("berachain_uncle_blocks") }}' 
+      - name: BLOCK_HEADER_JSON
+        description: '{{ doc("berachain_block_header_json") }}'
+      - name: FACT_BLOCKS_ID
+        description: '{{ doc("pk") }}'   
+      - name: INSERTED_TIMESTAMP
+        description: '{{ doc("inserted_timestamp") }}'   
+      - name: MODIFIED_TIMESTAMP
+        description: '{{ doc("modified_timestamp") }}'

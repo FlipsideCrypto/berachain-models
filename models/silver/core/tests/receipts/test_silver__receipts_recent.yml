@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: test_silver_testnet__receipts_recent
+  - name: test_silver__receipts_recent
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:

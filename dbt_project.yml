@@ -65,9 +65,9 @@ vars:
   OBSERV_FULL_TEST: False
   WAIT: 0
   HEAL_MODEL: False
-  HEAL_CURATED_MODEL: []
+  HEAL_MODELS: []
   START_GHA_TASKS: False
-
+  RELOAD_TRACES: False
 
 #### STREAMLINE 2.0 BEGIN ####
 
