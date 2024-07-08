@@ -63,7 +63,7 @@ The un-decoded event data.
 
 {% docs berachain_logs_table_doc %}
 
-This table contains flattened event logs from transactions on the kaia Blockchain. Transactions may have multiple events, which are denoted by the event index for a transaction hash. Therefore, this table is unique on the combination of transaction hash and event index.
+This table contains flattened event logs from transactions on the berachain Blockchain. Transactions may have multiple events, which are denoted by the event index for a transaction hash. Therefore, this table is unique on the combination of transaction hash and event index.
 
 {% enddocs %}
 

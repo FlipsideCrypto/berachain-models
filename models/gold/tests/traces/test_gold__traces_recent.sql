@@ -1,0 +1,27 @@
+{{ config (
+    materialized = 'view',
+    tags = ['recent_test']
+) }}
+
+WITH last_3_days AS (
+
+    SELECT
+        block_number
+    FROM
+        {{ ref("_block_lookback") }}
+)
+SELECT
+    *
+FROM
+    {{ ref('testnet__fact_traces') }}
+WHERE
+    block_number >= (
+        SELECT
+            block_number
+        FROM
+            last_3_days
+    )
+AND 
+    from_address <> '0x'
+AND
+    to_address <> '0x'

@@ -113,7 +113,7 @@ The amount of tokens transferred returned as a string to preserve precision. Thi
 
 {% docs berachain_transfer_table_doc %}
 
-This table contains events on the kaia Blockchain with an event name of 'Transfer'. The contract address is the token transferred, and the raw amount field is the amount of tokens transferred. Please note this amount is not decimal adjusted. This table will not contain transfers of native ETH.
+This table contains events on the berachain Blockchain with an event name of 'Transfer'. The contract address is the token transferred, and the raw amount field is the amount of tokens transferred. Please note this amount is not decimal adjusted. This table will not contain transfers of native ETH.
 
 {% enddocs %}
 

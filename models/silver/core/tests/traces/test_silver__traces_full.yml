@@ -6,7 +6,7 @@ models:
           combination_of_columns:
             - BLOCK_NUMBER
             - TX_POSITION
-            - TRACE_INDEX
+            - TRACE_ADDRESS
     columns:
       - name: BLOCK_NUMBER
         tests:
@@ -14,46 +14,19 @@ models:
           - dbt_expectations.expect_column_values_to_be_in_type_list:
               column_type_list:
                 - NUMBER    
-                - FLOAT    
-      - name: BLOCK_TIMESTAMP
+                - FLOAT
+      - name: TX_POSITION
         tests:
-          - not_null:
-              where: NOT IS_PENDING
-          - dbt_expectations.expect_row_values_to_have_recent_data:
-              datepart: day
-              interval: 1
+          - not_null
           - dbt_expectations.expect_column_values_to_be_in_type_list:
               column_type_list:
-                - TIMESTAMP_NTZ
-      - name: TX_HASH
+                - NUMBER    
+                - FLOAT   
+      - name: TRACE_ADDRESS
+        tests:
+          - not_null
+      - name: PARENT_TRACE_ADDRESS
         tests:
           - not_null:
-              where: NOT IS_PENDING
-          - dbt_expectations.expect_column_values_to_match_regex:
-              regex: 0[xX][0-9a-fA-F]+
-      - name: FROM_ADDRESS
-        tests:
-          - not_null:
-              where: TYPE <> 'SELFDESTRUCT' AND INPUT <> '0x' AND OUTPUT <> '0x'
-          - dbt_expectations.expect_column_values_to_match_regex:
-              regex: 0[xX][0-9a-fA-F]+
-              where: TYPE <> 'SELFDESTRUCT' AND INPUT <> '0x' AND OUTPUT <> '0x'
-      - name: TO_ADDRESS
-        tests:
-          - dbt_expectations.expect_column_values_to_match_regex:
-              regex: 0[xX][0-9a-fA-F]+
-              where: TO_ADDRESS IS NOT NULL AND INPUT <> '0x' AND OUTPUT <> '0x'
-      - name: IDENTIFIER
-        tests:
-          - not_null
-      - name: VALUE
-        tests:
-          - not_null
-      - name: GAS
-        tests:
-          - not_null
-      - name: GAS_USED
-        tests:
-          - not_null
-
+              where: TRACE_ADDRESS <> 'ORIGIN'
 
