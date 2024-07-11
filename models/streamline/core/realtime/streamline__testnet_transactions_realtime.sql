@@ -3,12 +3,12 @@
     post_hook = fsc_utils.if_data_call_function_v2(
         func = 'streamline.udf_bulk_rest_api_v2',
         target = "{{this.schema}}.{{this.identifier}}",
-        params ={ "external_table" :"testnet_traces",
+        params ={ "external_table" :"testnet_transactions",
         "sql_limit" :"20000",
         "producer_batch_size" :"5000",
         "worker_batch_size" :"2000",
         "sql_source" :"{{this.identifier}}",
-        "exploded_key": tojson(["result"]) }
+        "exploded_key": tojson(["result.transactions"]) }
     ),
     tags = ['streamline_testnet_realtime']
 ) }}
@@ -25,7 +25,7 @@ WITH to_do AS (
     SELECT
         block_number
     FROM
-        {{ ref("streamline__testnet_traces_complete") }}
+        {{ ref("streamline__testnet_transactions_complete") }}
 ),
 ready_blocks AS (
     SELECT
@@ -52,15 +52,14 @@ SELECT
             'jsonrpc',
             '2.0',
             'method',
-            'debug_traceBlockByNumber',
+            'eth_getBlockByNumber',
             'params',
-            ARRAY_CONSTRUCT(utils.udf_int_to_hex(block_number), OBJECT_CONSTRUCT('tracer', 'callTracer', 'timeout', '180s'))
-        ),
-        'Vault/prod/berachain/internal/testnet'
-    ) AS request
-FROM
-    ready_blocks
-ORDER BY
-    block_number DESC
-LIMIT
-    20000
+            ARRAY_CONSTRUCT(utils.udf_int_to_hex(block_number), TRUE)),
+            'Vault/prod/berachain/internal/testnet_2'
+        ) AS request
+        FROM
+            ready_blocks
+        ORDER BY
+            block_number DESC
+        LIMIT
+            20000
