@@ -7,6 +7,7 @@
     tags = ['non_realtime'],
     full_refresh = false
 ) }}
+-- add Search Optimization to mainnet
 
 WITH base AS (
 

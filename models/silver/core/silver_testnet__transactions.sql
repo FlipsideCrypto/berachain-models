@@ -7,6 +7,7 @@
     post_hook = "ALTER TABLE {{ this }} ADD SEARCH OPTIMIZATION",
     tags = ['non_realtime']
 ) }}
+-- add Search Optimization to mainnet
 
 WITH base AS (
 
