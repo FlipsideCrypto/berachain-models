@@ -14,7 +14,7 @@ SELECT
 FROM
     {{ ref("silver_testnet__transactions") }}
     tx
-    LEFT JOIN {{ ref("silver_testnet__traces") }}
+    LEFT JOIN {{ ref("testnet__fact_traces") }}
     tr
     ON tx.block_number = tr.block_number
     AND tx.tx_hash = tr.tx_hash
