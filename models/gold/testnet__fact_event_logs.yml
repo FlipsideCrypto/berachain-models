@@ -1,0 +1,38 @@
+version: 2
+models:
+  - name: testnet__fact_event_logs
+    description: '{{ doc("berachain_logs_table_doc") }}'
+
+    columns:
+      - name: BLOCK_NUMBER
+        description: '{{ doc("berachain_block_number") }}'   
+      - name: BLOCK_TIMESTAMP
+        description: '{{ doc("berachain_block_timestamp") }}'
+      - name: TX_HASH
+        description: '{{ doc("berachain_logs_tx_hash") }}'
+      - name: EVENT_INDEX
+        description: '{{ doc("berachain_event_index") }}'
+      - name: CONTRACT_ADDRESS
+        description: '{{ doc("berachain_logs_contract_address") }}'
+      - name: TOPICS
+        description: '{{ doc("berachain_topics") }}'
+      - name: DATA
+        description: '{{ doc("berachain_logs_data") }}'
+      - name: EVENT_REMOVED
+        description: '{{ doc("berachain_event_removed") }}'  
+      - name: _LOG_ID
+        description: '{{ doc("internal_column") }}'
+      - name: TX_SUCCEEDED
+        description: '{{ doc("berachain_tx_status") }}' 
+      - name: ORIGIN_FUNCTION_SIGNATURE
+        description: '{{ doc("berachain_origin_sig") }}'
+      - name: ORIGIN_FROM_ADDRESS
+        description: '{{ doc("berachain_origin_from") }}'
+      - name: ORIGIN_TO_ADDRESS
+        description: '{{ doc("berachain_origin_to") }}'
+      - name: FACT_EVENT_LOGS_ID
+        description: '{{ doc("pk") }}'   
+      - name: INSERTED_TIMESTAMP
+        description: '{{ doc("inserted_timestamp") }}'   
+      - name: MODIFIED_TIMESTAMP
+        description: '{{ doc("modified_timestamp") }}' 

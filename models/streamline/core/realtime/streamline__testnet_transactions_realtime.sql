@@ -32,6 +32,11 @@ ready_blocks AS (
         block_number
     FROM
         to_do
+    UNION
+    SELECT
+        block_number
+    FROM
+        {{ ref("_missing_txs") }}
 )
 SELECT
     block_number,
@@ -55,7 +60,7 @@ SELECT
             'eth_getBlockByNumber',
             'params',
             ARRAY_CONSTRUCT(utils.udf_int_to_hex(block_number), TRUE)),
-            'Vault/prod/berachain/internal/testnet_2'
+            'Vault/prod/berachain/internal/archive'
         ) AS request
         FROM
             ready_blocks
