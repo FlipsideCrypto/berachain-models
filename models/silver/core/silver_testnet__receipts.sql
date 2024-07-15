@@ -5,10 +5,9 @@
     unique_key = "block_number",
     cluster_by = "ROUND(block_number, -3)",
     post_hook = "ALTER TABLE {{ this }} ADD SEARCH OPTIMIZATION on equality(tx_hash)",
-    tags = ['non_realtime'],
-    full_refresh = false
+    tags = ['non_realtime']
 ) }}
--- add Search Optimization to mainnet
+--     full_refresh = false
 
 WITH base AS (
 

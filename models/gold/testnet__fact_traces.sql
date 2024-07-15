@@ -5,7 +5,7 @@
     cluster_by = "block_timestamp::date",
     post_hook = "ALTER TABLE {{ this }} ADD SEARCH OPTIMIZATION"
 ) }}
-
+-- add Search Optimization to mainnet
 WITH silver_traces AS (
 
     SELECT

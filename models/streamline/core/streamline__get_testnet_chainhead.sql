@@ -23,7 +23,7 @@ SELECT
             'params',
             []
         ),
-        'Vault/prod/berachain/internal/testnet_2'
+        'Vault/prod/berachain/internal/archive'
     ) AS resp,
     utils.udf_hex_to_int(
         resp :data :result :: STRING

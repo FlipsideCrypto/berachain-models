@@ -6,7 +6,7 @@
     cluster_by = "block_timestamp::date",
     tags = ['non_realtime']
 ) }}
-
+-- add Search Optimization to mainnet
 SELECT
     A.block_number AS block_number,
     block_timestamp,
