@@ -20,3 +20,4 @@ sources:
       - name: testnet_blocks
       - name: testnet_transactions
       - name: testnet_traces
+      - name: testnet_confirm_blocks
