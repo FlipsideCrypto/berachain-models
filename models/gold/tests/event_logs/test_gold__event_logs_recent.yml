@@ -4,7 +4,8 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - _LOG_ID
+            - TX_HASH
+            - EVENT_INDEX
       - fsc_utils.sequence_gaps:
           partition_by:
             - BLOCK_NUMBER

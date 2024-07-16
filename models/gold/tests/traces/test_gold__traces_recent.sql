@@ -21,7 +21,3 @@ WHERE
         FROM
             last_3_days
     )
-AND 
-    from_address <> '0x'
-AND
-    to_address <> '0x'
