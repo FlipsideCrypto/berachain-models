@@ -20,7 +20,6 @@ SELECT
     DATA,
     event_removed,
     tx_status AS tx_succeeded,
-    _log_id,
     logs_id AS fact_event_logs_id,
     inserted_timestamp,
     modified_timestamp
@@ -33,7 +32,7 @@ FROM
 WHERE
     modified_timestamp > (
         SELECT
-            MAX(modified_timestamp) _INSERTED_TIMESTAMP
+            MAX(modified_timestamp)
         FROM
             {{ this }}
     )
