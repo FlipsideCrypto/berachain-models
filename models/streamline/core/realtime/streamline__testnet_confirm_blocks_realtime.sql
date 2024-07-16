@@ -9,11 +9,17 @@
         "worker_batch_size" :"2000",
         "sql_source" :"{{this.identifier}}" }
     ),
-    tags = ['confirm_blocks_temp']
+    tags = ['streamline_testnet_realtime']
 ) }}
 
-WITH look_back AS (
+WITH last_3_days AS (
 
+    SELECT
+        block_number
+    FROM
+        {{ ref("_block_lookback") }}
+),
+look_back AS (
     SELECT
         block_number
     FROM
@@ -36,11 +42,17 @@ tbl AS (
             FROM
                 look_back
         )
+        AND block_number >= (
+            SELECT
+                block_number
+            FROM
+                last_3_days
+        )
     EXCEPT
     SELECT
         block_number
     FROM
-        {{ ref("streamline__complete_confirmed_blocks") }}
+        {{ ref("streamline__testnet_confirmed_blocks_complete") }}
     WHERE
         block_number IS NOT NULL
         AND block_number <= (
@@ -48,6 +60,17 @@ tbl AS (
                 block_number
             FROM
                 look_back
+        )
+        AND _inserted_timestamp >= DATEADD(
+            'day',
+            -4,
+            SYSDATE()
+        )
+        AND block_number >= (
+            SELECT
+                block_number
+            FROM
+                last_3_days
         )
 )
 SELECT
@@ -72,11 +95,9 @@ SELECT
             'eth_getBlockByNumber',
             'params',
             ARRAY_CONSTRUCT(utils.udf_int_to_hex(block_number), FALSE)),
-            'Vault/prod/berachain/internal/archive'
+            'Vault/prod/berachain/internal/testnet_2'
         ) AS request
         FROM
             tbl
         ORDER BY
             block_number ASC
-        LIMIT
-            20000
