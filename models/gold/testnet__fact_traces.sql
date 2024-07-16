@@ -30,9 +30,6 @@ SELECT
     error_reason,
     trace_status AS trace_succeeded,
     DATA,
-    is_pending,
-    _call_id,
-    _inserted_timestamp,
     traces_id AS fact_traces_id,
     inserted_timestamp,
     modified_timestamp

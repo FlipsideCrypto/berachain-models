@@ -20,8 +20,6 @@ models:
         description: '{{ doc("berachain_logs_data") }}'
       - name: EVENT_REMOVED
         description: '{{ doc("berachain_event_removed") }}'  
-      - name: _LOG_ID
-        description: '{{ doc("internal_column") }}'
       - name: TX_SUCCEEDED
         description: '{{ doc("berachain_tx_status") }}' 
       - name: ORIGIN_FUNCTION_SIGNATURE
