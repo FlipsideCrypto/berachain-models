@@ -54,7 +54,7 @@ SELECT
             'eth_getBlockByNumber',
             'params',
             ARRAY_CONSTRUCT(utils.udf_int_to_hex(block_number), FALSE)),
-            'Vault/prod/berachain/internal/archive'
+            'Vault/prod/berachain/internal/testnet_2'
         ) AS request
         FROM
             ready_blocks
