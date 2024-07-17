@@ -9,7 +9,6 @@
         "worker_batch_size" :"2000",
         "sql_source" :"{{this.identifier}}" }
     ),
-    enabled = false,
     tags = ['streamline_testnet_realtime']
 ) }}
 
@@ -79,17 +78,17 @@ SELECT
     ROUND(
         block_number,
         -3
-    ) AS partition_key,
+    ) :: INT AS partition_key,
     {{ target.database }}.live.udf_api(
         'POST',
-        '{service}/{Authentication}',
+        '{Service}',
         OBJECT_CONSTRUCT(
             'Content-Type',
             'application/json'
         ),
         OBJECT_CONSTRUCT(
             'id',
-            block_number,
+            block_number :: STRING,
             'jsonrpc',
             '2.0',
             'method',
