@@ -101,3 +101,5 @@ SELECT
             tbl
         ORDER BY
             block_number ASC
+        LIMIT
+            20000
