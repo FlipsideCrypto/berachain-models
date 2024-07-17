@@ -9,6 +9,7 @@
         "worker_batch_size" :"2000",
         "sql_source" :"{{this.identifier}}" }
     ),
+    enabled = false,
     tags = ['streamline_testnet_realtime']
 ) }}
 
