@@ -8,21 +8,25 @@
 WITH base AS (
 
     SELECT
-        contract_address
+        contract_address,
+        total_interaction_count
     FROM
         {{ ref('silver_testnet__relevant_contracts') }}
     WHERE
         total_interaction_count >= 250
 
 {% if is_incremental() %}
-EXCEPT
-SELECT
-    contract_address
-FROM
-    {{ this }}
-WHERE
-    abi_data :data :result :: STRING <> 'Max rate limit reached'
+AND contract_address NOT IN (
+    SELECT
+        contract_address
+    FROM
+        {{ this }}
+    WHERE
+        abi_data :data :result :: STRING <> 'Max rate limit reached'
+)
 {% endif %}
+ORDER BY
+    total_interaction_count DESC
 LIMIT
     50
 ), all_contracts AS (
@@ -30,7 +34,6 @@ LIMIT
         contract_address
     FROM
         base
-
 ),
 row_nos AS (
     SELECT
