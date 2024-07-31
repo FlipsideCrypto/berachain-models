@@ -44,4 +44,4 @@ jobs:
           dbt deps
       - name: Run DBT Jobs
         run: |
-          dbt run -m "berachain_models,tag:non_realtime"
+          dbt run --vars '{"STREAMLINE_INVOKE_STREAMS":True}' -m "berachain_models,tag:non_realtime" "berachain_models,tag:streamline_decoded_logs_complete" "berachain_models,tag:streamline_decoded_logs_realtime"
