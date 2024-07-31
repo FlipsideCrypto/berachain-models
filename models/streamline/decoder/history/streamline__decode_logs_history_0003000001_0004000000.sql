@@ -3,7 +3,7 @@
     post_hook = [fsc_utils.if_data_call_function_v2( 
         func = 'streamline.udf_bulk_decode_logs_v2', 
         target = "{{this.schema}}.{{this.identifier}}", 
-        params ={ "external_table" :"decoded_logs", 
+        params ={ "external_table" :"testnet_decoded_logs", 
         "sql_limit" :"7500000", 
         "producer_batch_size" :"400000", 
         "worker_batch_size" :"200000", 
