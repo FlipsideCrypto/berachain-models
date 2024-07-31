@@ -174,37 +174,37 @@ missing_data AS (
     WHERE
         t.is_pending
         AND l.block_timestamp IS NOT NULL
-), 
-complete_data as (
-{% endif %}
-SELECT
-    tx_hash,
-    block_number,
-    event_index,
-    event_name,
-    contract_address,
-    decoded_data,
-    transformed,
-    _log_id,
-    _inserted_timestamp,
-    decoded_flat,
-    block_timestamp,
-    origin_function_signature,
-    origin_from_address,
-    origin_to_address,
-    topics,
-    DATA,
-    event_removed,
-    tx_status,
-    is_pending,
-    {{ dbt_utils.generate_surrogate_key(
-        ['tx_hash', 'event_index']
-    ) }} AS decoded_logs_id,
-    SYSDATE() AS inserted_timestamp,
-    SYSDATE() AS modified_timestamp,
-    '{{ invocation_id }}' AS _invocation_id
-FROM
-    new_records
+)
+{% endif %},
+complete_data AS (
+    SELECT
+        tx_hash,
+        block_number,
+        event_index,
+        event_name,
+        contract_address,
+        decoded_data,
+        transformed,
+        _log_id,
+        _inserted_timestamp,
+        decoded_flat,
+        block_timestamp,
+        origin_function_signature,
+        origin_from_address,
+        origin_to_address,
+        topics,
+        DATA,
+        event_removed,
+        tx_status,
+        is_pending,
+        {{ dbt_utils.generate_surrogate_key(
+            ['tx_hash', 'event_index']
+        ) }} AS decoded_logs_id,
+        SYSDATE() AS inserted_timestamp,
+        SYSDATE() AS modified_timestamp,
+        '{{ invocation_id }}' AS _invocation_id
+    FROM
+        new_records
 
 {% if is_incremental() %}
 UNION
