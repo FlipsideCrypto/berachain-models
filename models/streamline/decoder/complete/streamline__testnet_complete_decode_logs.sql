@@ -5,7 +5,6 @@
     cluster_by = "ROUND(block_number, -3)",
     merge_update_columns = ["_log_id"],
     post_hook = "ALTER TABLE {{ this }} ADD SEARCH OPTIMIZATION on equality(_log_id)",
-    full_refresh = false,
     tags = ['streamline_decoded_logs_complete']
 ) }}
 
@@ -20,7 +19,7 @@ FROM
 WHERE
     TO_TIMESTAMP_NTZ(_inserted_timestamp) >= (
         SELECT
-            MAX(_inserted_timestamp)
+           COALESCE(MAX(_inserted_timestamp), '1970-01-01' :: TIMESTAMP) _inserted_timestamp
         FROM
             {{ this }}
     )
