@@ -19,7 +19,7 @@ FROM
 WHERE
     TO_TIMESTAMP_NTZ(_inserted_timestamp) >= (
         SELECT
-            MAX(_inserted_timestamp)
+           COALESCE(MAX(_inserted_timestamp), '1970-01-01' :: TIMESTAMP) _inserted_timestamp
         FROM
             {{ this }}
     )
