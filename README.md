@@ -98,12 +98,12 @@ To add/update a model's snowflake tags, add/modify the `meta` model property und
 By default, model tags are pushed to Snowflake on each load. You can disable this by setting the `UPDATE_SNOWFLAKE_TAGS` project variable to `False` during a run.
 
 ```
-dbt run --vars '{"UPDATE_SNOWFLAKE_TAGS":False}' -s models/core/core__fact_blocks.sql
+dbt run --vars '{"UPDATE_SNOWFLAKE_TAGS":False}' -s models/testnet/testnet__fact_blocks.sql
 ```
 
 ### Querying for existing tags on a model in snowflake
 
 ```
 select *
-from table(berchain.information_schema.tag_references('berchain.core.fact_blocks', 'table'));
+from table(berachain.information_schema.tag_references('berachain.testnet.fact_blocks', 'table'));
 ```
