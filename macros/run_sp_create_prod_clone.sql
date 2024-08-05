@@ -1,8 +1,8 @@
 {% macro run_sp_create_prod_clone() %}
     {% set clone_query %}
-    call berchain._internal.create_prod_clone(
-        'berchain',
-        'berchain_dev',
+    call berachain._internal.create_prod_clone(
+        'berachain',
+        'berachain_dev',
         'internal_dev'
     );
 {% endset %}

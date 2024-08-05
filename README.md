@@ -105,5 +105,5 @@ dbt run --vars '{"UPDATE_SNOWFLAKE_TAGS":False}' -s models/core/core__fact_block
 
 ```
 select *
-from table(berchain.information_schema.tag_references('berchain.core.fact_blocks', 'table'));
+from table(berachain.information_schema.tag_references('berachain.core.fact_blocks', 'table'));
 ```
