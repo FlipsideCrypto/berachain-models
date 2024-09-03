@@ -81,7 +81,11 @@ SELECT
     ) :: INT AS partition_key,
     {{ target.database }}.live.udf_api(
         'POST',
-        '{Service}',
+        CONCAT(
+            '{Service}',
+            '/',
+            '{Authentication}'
+        ),
         OBJECT_CONSTRUCT(
             'Content-Type',
             'application/json'
@@ -95,7 +99,7 @@ SELECT
             'eth_getBlockByNumber',
             'params',
             ARRAY_CONSTRUCT(utils.udf_int_to_hex(block_number), FALSE)),
-            'Vault/prod/berachain/internal/testnet_2'
+            'Vault/prod/berachain/quicknode/bartio'
         ) AS request
         FROM
             tbl
