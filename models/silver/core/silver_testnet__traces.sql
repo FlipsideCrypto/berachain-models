@@ -1,4 +1,4 @@
--- depends_on: {{ ref('bronze_testnet__traces') }}
+-- depends_on: {{ ref('bronze_testnet__streamline_traces') }}
 {{ config (
     materialized = "incremental",
     incremental_strategy = 'delete+insert',
@@ -25,7 +25,7 @@ WITH bronze_traces AS (
     FROM
 
 {% if is_incremental() %}
-{{ ref('bronze_testnet__traces') }}
+{{ ref('bronze_testnet__streamline_traces') }}
 WHERE
     _inserted_timestamp >= (
         SELECT
@@ -35,7 +35,7 @@ WHERE
     )
     AND DATA :result IS NOT NULL
 {% else %}
-    {{ ref('bronze_testnet__FR_traces') }}
+    {{ ref('bronze_testnet__streamline_fr_traces') }}
 WHERE
     partition_key <= 2000000
     AND DATA :result IS NOT NULL
