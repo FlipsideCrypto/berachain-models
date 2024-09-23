@@ -1,4 +1,4 @@
--- depends_on: {{ ref('bronze_testnet__receipts') }}
+-- depends_on: {{ ref('bronze_testnet__streamline_receipts') }}
 {{ config (
     materialized = "incremental",
     unique_key = "block_number",
@@ -19,7 +19,7 @@ SELECT
 FROM
 
 {% if is_incremental() %}
-{{ ref('bronze_testnet__receipts') }}
+{{ ref('bronze_testnet__streamline_receipts') }}
 WHERE
     _inserted_timestamp >= (
         SELECT
@@ -27,7 +27,7 @@ WHERE
         FROM
             {{ this }})
         {% else %}
-            {{ ref('bronze_testnet__FR_receipts') }}
+            {{ ref('bronze_testnet__streamline_fr_receipts') }}
         {% endif %}
 
         qualify(ROW_NUMBER() over (PARTITION BY block_number

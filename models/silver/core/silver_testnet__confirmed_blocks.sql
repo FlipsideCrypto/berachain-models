@@ -1,4 +1,4 @@
--- depends_on: {{ ref('bronze_testnet__confirm_blocks') }}
+-- depends_on: {{ ref('bronze_testnet__streamline_confirm_blocks') }}
 {{ config(
     materialized = 'incremental',
     incremental_strategy = 'delete+insert',
@@ -23,7 +23,7 @@ WITH base AS (
     FROM
 
 {% if is_incremental() %}
-{{ ref('bronze_testnet__confirm_blocks') }}
+{{ ref('bronze_testnet__streamline_confirm_blocks') }}
 WHERE
     _inserted_timestamp >= (
         SELECT
@@ -37,7 +37,7 @@ WHERE
             {{ this }}
     )
 {% else %}
-    {{ ref('bronze_testnet__FR_confirm_blocks') }}
+    {{ ref('bronze_testnet__streamline_fr_confirm_blocks') }}
 {% endif %}
 
 qualify(ROW_NUMBER() over (PARTITION BY block_number
