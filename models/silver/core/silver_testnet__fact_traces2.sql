@@ -11,5 +11,6 @@
 {{ fsc_evm.gold_traces_v1(
     full_reload_start_block = 1500000,
     full_reload_blocks = 750000,
-    schema_name = 'silver_testnet'
+    schema_name = 'silver_testnet',
+    tx_status_bool = true
 ) }}
