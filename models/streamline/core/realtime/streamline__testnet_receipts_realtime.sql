@@ -6,7 +6,7 @@
         params ={ "external_table" :"testnet_receipts",
         "sql_limit" :"3600",
         "producer_batch_size" :"3600",
-        "worker_batch_size" :"3600",
+        "worker_batch_size" :"1800",
         "sql_source" :"{{this.identifier}}",
         "exploded_key": tojson(["result"]) }
     ),
@@ -81,4 +81,4 @@ SELECT
         ORDER BY
             block_number DESC
         LIMIT
-            20000
+            3600

@@ -76,4 +76,4 @@ SELECT
         ORDER BY
             block_number DESC
         LIMIT
-            20000
+            3600

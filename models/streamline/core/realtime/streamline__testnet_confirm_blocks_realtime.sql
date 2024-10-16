@@ -106,4 +106,4 @@ SELECT
         ORDER BY
             block_number ASC
         LIMIT
-            20000
+            3600
