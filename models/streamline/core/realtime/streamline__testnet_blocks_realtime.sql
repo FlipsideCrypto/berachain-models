@@ -4,9 +4,9 @@
         func = 'streamline.udf_bulk_rest_api_v2',
         target = "{{this.schema}}.{{this.identifier}}",
         params ={ "external_table" :"testnet_blocks",
-        "sql_limit" :"12000",
-        "producer_batch_size" :"12000",
-        "worker_batch_size" :"800",
+        "sql_limit" :"3600",
+        "producer_batch_size" :"3600",
+        "worker_batch_size" :"3600",
         "sql_source" :"{{this.identifier}}" }
     ),
     tags = ['streamline_testnet_realtime']
@@ -65,4 +65,4 @@ SELECT
         ORDER BY
             block_number DESC
         LIMIT
-            20000
+            3600
