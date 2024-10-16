@@ -1,5 +1,5 @@
 workflow_name,workflow_schedule
 dbt_run_streamline_chainhead,"3,33 * * * *"
-dbt_run_scheduled_non_realtime,"15,45 * * * *"
+dbt_run_scheduled_non_realtime,"19,49 * * * *"
 dbt_test_tasks,"8 * * * *"
-dbt_run_streamline_decoder,"23,53 * * * *"
+dbt_run_streamline_decoder,"27,57 * * * *"
