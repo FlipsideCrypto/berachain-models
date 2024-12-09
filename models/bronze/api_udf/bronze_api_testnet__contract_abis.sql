@@ -28,7 +28,7 @@ AND contract_address NOT IN (
 ORDER BY
     total_interaction_count DESC
 LIMIT
-    50
+    400
 ), all_contracts AS (
     SELECT
         contract_address
@@ -45,7 +45,7 @@ row_nos AS (
     FROM
         all_contracts
 ),
-batched AS ({% for item in range(51) %}
+batched AS ({% for item in range(501) %}
 SELECT
     rn.contract_address, live.udf_api('GET', CONCAT('https://api.routescan.io/v2/network/testnet/evm/80084/etherscan/api?module=contract&action=getabi&address=', rn.contract_address),{},{}, '') AS abi_data, SYSDATE() AS _inserted_timestamp
 FROM
